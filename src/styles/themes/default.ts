@@ -9,6 +9,7 @@ export const defaultTheme = {
   'base-border': tokens['blue-500'],
   'base-post': tokens['blue-600'],
   'base-profile': tokens['blue-700'],
+  'base-header': tokens['blue-750'],
   'base-background': tokens['blue-800'],
   'base-input': tokens.black,
   'base-blue': tokens['blue-050'],

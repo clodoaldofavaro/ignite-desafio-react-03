@@ -1,9 +1,10 @@
 import { HomeContainer } from './styles'
+import { UserProfile } from './components/UserProfile'
 
 export function Home() {
   return (
     <HomeContainer>
-      <h1>Hello</h1>
+      <UserProfile />
     </HomeContainer>
   )
 }

@@ -9,5 +9,6 @@ export const tokens = {
   'blue-500': '#1C2F41',
   'blue-600': '#112131',
   'blue-700': '#0B1B2B',
+  'blue-750': '#0C2238',
   'blue-800': '#071422',
 } as const

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
-  background: ${(props) => props.theme['base-profile']};
+  background: ${(props) => props.theme['base-header']};
   position: fixed;
   top: 0;
   width: 100%;
