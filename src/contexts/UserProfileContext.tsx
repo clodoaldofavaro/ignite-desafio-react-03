@@ -73,7 +73,7 @@ export function UserProfileProvider({ children }: UserProfileProviderProps) {
 
   const fetchUserProfile = useCallback(async () => {
     const response = await fetch(
-      'https://api.github.com/users/clodoaldo-favero',
+      'https://api.github.com/users/clodoaldo-favaro',
     )
     const userProfileResponse = await response.json()
     const userProfileData = parseUserProfileResponse(userProfileResponse)
