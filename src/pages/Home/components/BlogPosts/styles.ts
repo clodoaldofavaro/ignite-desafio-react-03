@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const BlogPostsContainer = styled.div`
-  margin-top: 72px;
+  margin-top: 320px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -9,13 +9,15 @@ export const BlogPostsContainer = styled.div`
 
   .posts-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 32px;
   }
 
   .post-card {
     padding: 32px;
     border-radius: 10px;
+    background-color: ${(props) => props.theme['base-post']};
+    height: 260px;
 
     header {
       margin-bottom: 20px;

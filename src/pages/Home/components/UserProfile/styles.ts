@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const UserProfileContainer = styled.div`
+  position: fixed;
   display: flex;
   align-items: center;
   gap: 32px;
@@ -8,6 +9,7 @@ export const UserProfileContainer = styled.div`
   border-radius: 10px;
   height: 212px;
   width: 100%;
+  max-width: 960px;
   margin-top: -88px;
   padding: 32px 32px 32px 40px;
   z-index: 2;
