@@ -10,7 +10,16 @@ export function BlogPosts() {
     return context.blogPosts
   })
 
-  console.log(blogPosts)
+  const formatDate = (date: string): string => {
+    const formatted = formatDistanceToNow(new Date(date), {
+      addSuffix: true,
+      locale: ptBR,
+    })
+
+    const firstLetter = formatted.charAt(0).toUpperCase()
+
+    return `${firstLetter}${formatted.slice(1)}`
+  }
 
   return (
     <BlogPostsContainer>
@@ -20,12 +29,7 @@ export function BlogPosts() {
             <div className="post-card" key={blogPost.number}>
               <header>
                 <h2>{blogPost.title}</h2>
-                <span>
-                  {formatDistanceToNow(new Date(blogPost.updatedAt), {
-                    addSuffix: true,
-                    locale: ptBR,
-                  })}
-                </span>
+                <span>{formatDate(blogPost.updatedAt)}</span>
               </header>
               <main>
                 <Markdown>
