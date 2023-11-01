@@ -1,6 +1,7 @@
 import { useContextSelector } from 'use-context-selector'
 import { BlogPostsContext } from '../../../../contexts/BlogPostsContext'
 import { BlogPostsContainer } from './styles'
+import Markdown from 'react-markdown'
 
 export function BlogPosts() {
   const blogPosts = useContextSelector(BlogPostsContext, (context) => {
@@ -16,7 +17,11 @@ export function BlogPosts() {
               <header>
                 <h2>{blogPost.title}</h2>
               </header>
-              <main>{blogPost.body.substring(0, 300)}...</main>
+              <main>
+                <Markdown>
+                  {blogPost.body.substring(0, 300).concat('...')}
+                </Markdown>
+              </main>
             </div>
           )
         })}

@@ -36,7 +36,7 @@ export function BlogPostsProvider({ children }: BlogPostsProviderProps) {
 
   const fetchBlogPosts = useCallback(async () => {
     const response = await fetch(
-      'https://api.github.com/repos/clodoaldo-favaro/github-blog-posts/issues',
+      'https://api.github.com/repos/clodoaldoivanfavaro/blog/issues',
     )
     const blogPostsResponse = await response.json()
 
