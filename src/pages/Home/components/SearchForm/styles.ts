@@ -10,7 +10,7 @@ export const SearchFormContainer = styled.form`
     display: flex;
     justify-content: space-between;
 
-    label {
+    h3 {
       color: ${(props) => props.theme['base-subtitle']};
       font-weight: bold;
       font-size: 18px;
@@ -30,6 +30,7 @@ export const SearchFormContainer = styled.form`
     color: ${(props) => props.theme['base-text']};
     padding: 12px 16px;
     border: 1px solid ${(props) => props.theme['base-border']};
+    font-size: 16px;
 
     &::placeholder {
       color: ${(props) => props.theme['base-label']};

@@ -4,6 +4,7 @@ import { BlogPostsContainer } from './styles'
 import Markdown from 'react-markdown'
 import { formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
+import { SearchForm } from '../SearchForm'
 
 export function BlogPosts() {
   const blogPosts = useContextSelector(BlogPostsContext, (context) => {
@@ -23,6 +24,7 @@ export function BlogPosts() {
 
   return (
     <BlogPostsContainer>
+      <SearchForm />
       <div className="posts-grid">
         {blogPosts.map((blogPost) => {
           return (

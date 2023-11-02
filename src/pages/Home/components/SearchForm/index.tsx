@@ -4,7 +4,7 @@ import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useContextSelector } from 'use-context-selector'
 import { memo } from 'react'
-import { Search } from 'react-router-dom'
+import { BlogPostsContext } from '../../../../contexts/BlogPostsContext'
 
 const searchFormSchema = z.object({
   query: z.string(),
@@ -14,25 +14,13 @@ type SearchFormInputs = z.infer<typeof searchFormSchema>
 
 function SearchFormComponent() {
   // TODO fetch blog posts with useContextSelector
-  const fetchBlogPosts = (query: string) => {
-    let data = []
-    const promise = new Promise((resolve, _) => {
-      setTimeout(() => {
-        console.log(query)
-        data = [
-          {
-            title: 'Hello',
-            time: 'Há 1 dia',
-            content: 'Blablablabla',
-          },
-        ]
+  const fetchBlogPosts = useContextSelector(BlogPostsContext, (context) => {
+    return context.fetchBlogPosts
+  })
 
-        resolve(data)
-      }, 200)
-    })
-
-    return promise
-  }
+  const blogPostsCounter = useContextSelector(BlogPostsContext, (context) => {
+    return context.blogPostsCounter
+  })
 
   const { register, handleSubmit } = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema),
@@ -43,8 +31,22 @@ function SearchFormComponent() {
     await fetchBlogPosts(data.query)
   }
 
+  const quantity = blogPostsCounter()
+
+  const quantityText = () => {
+    if (quantity === 1) {
+      return 'publicação'
+    }
+
+    return 'publicações'
+  }
+
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearchBlogPosts)}>
+      <div>
+        <h3>Publicações</h3>
+        <span>{`${quantity} ${quantityText()}`}</span>
+      </div>
       <input type="text" placeholder="Buscar conteúdo" {...register('query')} />
     </SearchFormContainer>
   )

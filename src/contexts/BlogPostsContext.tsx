@@ -23,6 +23,7 @@ interface BlogPostResponse {
 interface BlogPostsContextType {
   blogPosts: BlogPost[]
   fetchBlogPosts: (query?: string) => Promise<void>
+  blogPostsCounter: () => number
 }
 
 interface BlogPostsProviderProps {
@@ -34,11 +35,21 @@ export const BlogPostsContext = createContext({} as BlogPostsContextType)
 export function BlogPostsProvider({ children }: BlogPostsProviderProps) {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
 
-  const fetchBlogPosts = useCallback(async () => {
+  const fetchBlogPosts = useCallback(async (query?: string) => {
     const response = await fetch(
       'https://api.github.com/repos/clodoaldoivanfavaro/blog/issues',
     )
-    const blogPostsResponse = await response.json()
+    let blogPostsResponse = await response.json()
+
+    if (query) {
+      const lowerCaseQuery = query.toLowerCase()
+
+      blogPostsResponse = blogPostsResponse.filter(
+        (post: BlogPostResponse) =>
+          post.title.toLowerCase().includes(lowerCaseQuery) ||
+          post.body.toLowerCase().includes(lowerCaseQuery),
+      )
+    }
 
     setBlogPosts(parseBlogContextResponse(blogPostsResponse))
   }, [])
@@ -58,6 +69,8 @@ export function BlogPostsProvider({ children }: BlogPostsProviderProps) {
     })
   }
 
+  const blogPostsCounter = () => blogPosts.length
+
   useEffect(() => {
     fetchBlogPosts()
   }, [fetchBlogPosts])
@@ -67,6 +80,7 @@ export function BlogPostsProvider({ children }: BlogPostsProviderProps) {
       value={{
         blogPosts,
         fetchBlogPosts,
+        blogPostsCounter,
       }}
     >
       {children}
