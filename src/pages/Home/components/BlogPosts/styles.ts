@@ -18,6 +18,7 @@ export const BlogPostsContainer = styled.div`
     border-radius: 10px;
     background-color: ${(props) => props.theme['base-post']};
     height: 260px;
+    cursor: pointer;
 
     header {
       margin-bottom: 20px;

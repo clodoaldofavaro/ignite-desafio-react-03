@@ -5,8 +5,11 @@ import Markdown from 'react-markdown'
 import { formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 import { SearchForm } from '../SearchForm'
+import { useNavigate } from 'react-router-dom'
 
 export function BlogPosts() {
+  const navigate = useNavigate()
+
   const blogPosts = useContextSelector(BlogPostsContext, (context) => {
     return context.blogPosts
   })
@@ -22,13 +25,21 @@ export function BlogPosts() {
     return `${firstLetter}${formatted.slice(1)}`
   }
 
+  const navigateToPostDetails = (postNumber: number) => {
+    navigate('/' + postNumber)
+  }
+
   return (
     <BlogPostsContainer>
       <SearchForm />
       <div className="posts-grid">
         {blogPosts.map((blogPost) => {
           return (
-            <div className="post-card" key={blogPost.number}>
+            <div
+              className="post-card"
+              key={blogPost.number}
+              onClick={() => navigateToPostDetails(blogPost.number)}
+            >
               <header>
                 <h2>{blogPost.title}</h2>
                 <span>{formatDate(blogPost.updatedAt)}</span>

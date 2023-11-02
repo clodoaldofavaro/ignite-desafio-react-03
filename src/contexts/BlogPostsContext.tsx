@@ -51,6 +51,8 @@ export function BlogPostsProvider({ children }: BlogPostsProviderProps) {
       )
     }
 
+    blogPostsResponse.sort((a: BlogPost, b: BlogPost) => a.number - b.number)
+
     setBlogPosts(parseBlogContextResponse(blogPostsResponse))
   }, [])
 
