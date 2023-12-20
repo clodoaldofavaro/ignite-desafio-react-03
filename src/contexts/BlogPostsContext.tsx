@@ -9,6 +9,7 @@ interface BlogPost {
   number: number
   updatedAt: string
   createdAt: string
+  url: string
 }
 
 interface BlogPostResponse {
@@ -18,6 +19,7 @@ interface BlogPostResponse {
   number: number
   updated_at: string
   created_at: string
+  html_url: string
 }
 
 interface BlogPostsContextType {
@@ -67,6 +69,7 @@ export function BlogPostsProvider({ children }: BlogPostsProviderProps) {
         createdAt: post.created_at,
         updatedAt: post.updated_at,
         number: post.number,
+        url: post.html_url,
       }
     })
   }

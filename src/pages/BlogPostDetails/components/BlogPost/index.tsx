@@ -3,6 +3,7 @@ import { BlogPostsContext } from '../../../../contexts/BlogPostsContext'
 import { useContextSelector } from 'use-context-selector'
 import Markdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { BlogPostHeader } from '../BlogPostHeader'
 
 export function BlogPost() {
   const { postNumber } = useParams()
@@ -17,7 +18,7 @@ export function BlogPost() {
 
   return (
     <>
-      <h1>{blogPost?.title}</h1>
+      <BlogPostHeader></BlogPostHeader>
       <Markdown>{blogPost?.body}</Markdown>
     </>
   )
