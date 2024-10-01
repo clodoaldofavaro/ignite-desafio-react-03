@@ -2,8 +2,9 @@ import { useParams } from 'react-router-dom'
 import { BlogPostsContext } from '../../../../contexts/BlogPostsContext'
 import { useContextSelector } from 'use-context-selector'
 import Markdown from 'react-markdown'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { BlogPostHeader } from '../BlogPostHeader'
+import { BlogPostBodyContainer } from './styles'
+import { UserProfileContext } from '../../../../contexts/UserProfileContext'
 
 export function BlogPost() {
   const { postNumber } = useParams()
@@ -14,12 +15,20 @@ export function BlogPost() {
     return context.blogPosts
   })
 
+  const userProfile = useContextSelector(UserProfileContext, (context) => {
+    return context.userProfile
+  })
+
   const blogPost = blogPosts.find((post) => post.number === postNumberAsNumber)
+
+  console.log(userProfile)
 
   return (
     <>
       <BlogPostHeader></BlogPostHeader>
-      <Markdown>{blogPost?.body}</Markdown>
+      <BlogPostBodyContainer>
+        <Markdown>{blogPost?.body}</Markdown>
+      </BlogPostBodyContainer>
     </>
   )
 }

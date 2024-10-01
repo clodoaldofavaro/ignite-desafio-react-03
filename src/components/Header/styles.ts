@@ -10,6 +10,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 3;
 
   img:nth-child(2) {
     margin-top: -35px;

@@ -12,7 +12,7 @@ export const UserProfileContainer = styled.div`
   max-width: 960px;
   margin-top: -88px;
   padding: 32px 32px 32px 40px;
-  z-index: 2;
+  z-index: 3;
 
   img {
     width: 148px;

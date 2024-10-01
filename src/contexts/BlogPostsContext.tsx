@@ -39,7 +39,7 @@ export function BlogPostsProvider({ children }: BlogPostsProviderProps) {
 
   const fetchBlogPosts = useCallback(async (query?: string) => {
     const response = await fetch(
-      'https://api.github.com/repos/clodoaldo-favaro/blog/issues',
+      'https://api.github.com/repos/clodoaldofavaro/blog/issues',
     )
     let blogPostsResponse = await response.json()
 

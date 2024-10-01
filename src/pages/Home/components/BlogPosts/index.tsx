@@ -14,8 +14,6 @@ export function BlogPosts() {
     return context.blogPosts
   })
 
-  debugger
-
   const formatDate = (date: string): string => {
     const formatted = formatDistanceToNow(new Date(date), {
       addSuffix: true,

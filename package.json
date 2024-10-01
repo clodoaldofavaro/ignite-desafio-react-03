@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@hookform/resolvers": "^3.3.2",
     "@rocketseat/eslint-config": "^2.1.0",
     "@types/styled-components": "^5.1.26",
@@ -22,6 +26,7 @@
     "react-markdown": "^9.0.0",
     "react-router-dom": "^6.14.2",
     "react-syntax-highlighter": "^15.5.0",
+    "refractor": "^4.8.1",
     "scheduler": "^0.23.0",
     "styled-components": "^6.0.5",
     "use-context-selector": "^1.4.1",
